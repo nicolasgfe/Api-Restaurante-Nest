@@ -1,9 +1,10 @@
 import { FormaPagamento } from 'src/formasPagamento/formasPagamento.entity';
 import { VendaDetalhe } from 'src/vendasDetalhe/vendasDetalhe.entity';
-import {Entity, OneToMany, JoinColumn, PrimaryGeneratedColumn} from 'typeorm'
+import { Entity, OneToMany, JoinColumn, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-export class Venda{
+export class Venda {
+
   @PrimaryGeneratedColumn()
   id: number;
 

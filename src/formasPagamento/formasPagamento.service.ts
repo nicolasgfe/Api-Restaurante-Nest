@@ -1,20 +1,20 @@
-import { Injectable, HttpException} from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm';
 import { FormaPagamento } from './formasPagamento.entity';
 
-interface CreateFormaPagamentoDTO{
+interface CreateFormaPagamentoDTO {
   descricao: string;
 }
 
 @Injectable()
 export class FormaPagamentoService {
   constructor(
-  @InjectRepository(FormaPagamento)
-  private formaPagamentoRepository: Repository<FormaPagamento>,
+    @InjectRepository(FormaPagamento)
+    private formaPagamentoRepository: Repository<FormaPagamento>,
   ) { }
 
-  async create ({descricao}: CreateFormaPagamentoDTO): Promise<FormaPagamento>{
+  async create({ descricao }: CreateFormaPagamentoDTO): Promise<FormaPagamento> {
     try {
       const formapagamento = await this.formaPagamentoRepository.create({
         descricao
@@ -36,25 +36,25 @@ export class FormaPagamentoService {
     }
   }
 
-  async findById(id: number): Promise<FormaPagamento>{
+  async findById(id: number): Promise<FormaPagamento> {
     try {
-      const formapagamento = await this.formaPagamentoRepository.findOneBy({id})
-      
+      const formapagamento = await this.formaPagamentoRepository.findOneBy({ id })
+
       return formapagamento;
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
       throw new HttpException('Not found', 404)
-      
+
     }
   }
 
-  async update(id: number ,{descricao}: CreateFormaPagamentoDTO): Promise<void>{
-    await this.formaPagamentoRepository.update({id},{descricao})
+  async update(id: number, { descricao }: CreateFormaPagamentoDTO): Promise<void> {
+    await this.formaPagamentoRepository.update({ id }, { descricao })
   }
 
 
   async remove(id: number): Promise<void> {
-    try{
+    try {
       await this.formaPagamentoRepository.delete({
         id
       });

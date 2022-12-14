@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateCategoriaProduto implements MigrationInterface{
+export class CreateCategoriaProduto implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -18,7 +18,7 @@ export class CreateCategoriaProduto implements MigrationInterface{
                 ]
             })
 
-        )        
+        )
 
     }
 

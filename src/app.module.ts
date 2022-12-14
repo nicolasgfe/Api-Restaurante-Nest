@@ -3,13 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriaProduto } from './categoriaProdutos/categoriasProdutos.entity';
 import { CategoriaProdutoModule } from './categoriaProdutos/categoriasProdutos.Module';
 import { FormaPagamento } from './formasPagamento/formasPagamento.entity';
-import { FormaPagamentoModule } from './formasPagamento/formasPagamento.Module';
+import { FormaPagamentoModule } from './formasPagamento/formasPagamento.module';
 import { Produto } from './produtos/Produtos.entity';
-import { ProdutoModule } from './produtos/produtos.Module';
+import { ProdutoModule } from './produtos/produtos.module';
 import { Venda } from './vendas/vendas.entity';
-import { vendaModule } from './vendas/vendas.Module';
+import { vendaModule } from './vendas/vendas.module';
 import { VendaDetalhe } from './vendasDetalhe/vendasDetalhe.entity';
-import { vendaDetalheModule } from './vendasDetalhe/vendasDetalhe.Module';
+import { vendaDetalheModule } from './vendasDetalhe/vendasDetalhe.module';
 
 @Module({
   imports: [
@@ -29,7 +29,7 @@ import { vendaDetalheModule } from './vendasDetalhe/vendasDetalhe.Module';
       ],
       // migrations: ['./migrations'],
       synchronize: true,
-      // logging: true,
+      logging: true,
     }),
     ProdutoModule, 
     CategoriaProdutoModule, 

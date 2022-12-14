@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class formaPagamento implements MigrationInterface{
+export class formaPagamento implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -18,7 +18,7 @@ export class formaPagamento implements MigrationInterface{
                 ]
             })
 
-        )        
+        )
 
     }
 

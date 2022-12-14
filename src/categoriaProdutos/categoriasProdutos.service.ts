@@ -1,20 +1,20 @@
-import { Injectable, HttpException} from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm';
 import { CategoriaProduto } from './categoriasProdutos.entity';
 
-interface CreateCategoriaProdutoDTO{
+interface CreateCategoriaProdutoDTO {
   descricao: string;
 }
 
 @Injectable()
 export class CategoriaProdutoservice {
   constructor(
-  @InjectRepository(CategoriaProduto)
-  private categoriaProdutoRepository: Repository<CategoriaProduto>,
+    @InjectRepository(CategoriaProduto)
+    private categoriaProdutoRepository: Repository<CategoriaProduto>,
   ) { }
 
-  async create ({descricao}: CreateCategoriaProdutoDTO): Promise<CategoriaProduto>{
+  async create({ descricao }: CreateCategoriaProdutoDTO): Promise<CategoriaProduto> {
     try {
       const categoriaProduto = await this.categoriaProdutoRepository.create({
         descricao
@@ -36,19 +36,19 @@ export class CategoriaProdutoservice {
     }
   }
 
-  async findById(id: number): Promise<CategoriaProduto>{
+  async findById(id: number): Promise<CategoriaProduto> {
     try {
-      const categoriaProduto = await this.categoriaProdutoRepository.findOneBy({id})
-      
+      const categoriaProduto = await this.categoriaProdutoRepository.findOneBy({ id })
+
       return categoriaProduto;
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
       throw new HttpException('Not found', 404)
-      
+
     }
   }
   async remove(id: number): Promise<void> {
-    try{
+    try {
       await this.categoriaProdutoRepository.delete({
         id
       });

@@ -1,11 +1,11 @@
-import { Injectable, HttpException} from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm'
 import { FormaPagamento } from 'src/formasPagamento/formasPagamento.entity';
 import { VendaDetalhe } from 'src/vendasDetalhe/vendasDetalhe.entity';
 import { Repository } from 'typeorm';
 import { Venda } from './vendas.entity';
 
-interface CreateVendaDTO{
+interface CreateVendaDTO {
   cod_vendaDetalhe: VendaDetalhe;
   cod_formaPagamento: FormaPagamento;
 }
@@ -13,11 +13,11 @@ interface CreateVendaDTO{
 @Injectable()
 export class VendaService {
   constructor(
-  @InjectRepository(Venda)
-  private vendaRepository: Repository<Venda>,
+    @InjectRepository(Venda)
+    private vendaRepository: Repository<Venda>,
   ) { }
 
-  async create ({cod_vendaDetalhe, cod_formaPagamento}: CreateVendaDTO): Promise<Venda>{
+  async create({ cod_vendaDetalhe, cod_formaPagamento }: CreateVendaDTO): Promise<Venda> {
     try {
       const venda = await this.vendaRepository.create({
         cod_vendaDetalhe, cod_formaPagamento
@@ -39,25 +39,25 @@ export class VendaService {
     }
   }
 
-  async findById(id: number): Promise<Venda>{
+  async findById(id: number): Promise<Venda> {
     try {
-      const venda = await this.vendaRepository.findOneBy({id})
-      
+      const venda = await this.vendaRepository.findOneBy({ id })
+
       return venda;
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
       throw new HttpException('Not found', 404)
-      
+
     }
   }
 
-  async update(id: number ,{cod_vendaDetalhe, cod_formaPagamento}: CreateVendaDTO): Promise<void>{
-    await this.vendaRepository.update({id},{cod_vendaDetalhe, cod_formaPagamento})
+  async update(id: number, { cod_vendaDetalhe, cod_formaPagamento }: CreateVendaDTO): Promise<void> {
+    await this.vendaRepository.update({ id }, { cod_vendaDetalhe, cod_formaPagamento })
   }
 
 
   async remove(id: number): Promise<void> {
-    try{
+    try {
       await this.vendaRepository.delete({
         id
       });

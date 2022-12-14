@@ -8,9 +8,9 @@ class CategoriaProdutosController {
   constructor(private readonly categoriaProdutoService: CategoriaProdutoservice) { }
 
   @Post()
-  async create(@Req() request: Request, @Res() response: Response){
-    const {descricao}= request.body;
-    const categoriaProduto = await this.categoriaProdutoService.create({descricao});
+  async create(@Req() request: Request, @Res() response: Response) {
+    const { descricao } = request.body;
+    const categoriaProduto = await this.categoriaProdutoService.create({ descricao });
 
     return response.status(201).json(categoriaProduto).send();
   }
@@ -29,14 +29,14 @@ class CategoriaProdutosController {
     const { id } = request.params;
     const categoriaProduto = await this.categoriaProdutoService.findById(Number(id))
 
-    if(!categoriaProduto) {
+    if (!categoriaProduto) {
       throw new HttpException('Not found', 404);
     }
     return response.json(categoriaProduto).send();
   }
 
   @Delete('/:id')
-  async remove(@Req() request: Request, @Res() response: Response){
+  async remove(@Req() request: Request, @Res() response: Response) {
     const { id } = request.params;
 
     const categoriaProduto = await this.categoriaProdutoService.remove(Number(id));
