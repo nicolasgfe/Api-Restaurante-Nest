@@ -1,4 +1,4 @@
-import {Entity, OneToOne, Column, JoinColumn, PrimaryGeneratedColumn} from 'typeorm'
+import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm'
 
 @Entity()
 export class FormaPagamento{
