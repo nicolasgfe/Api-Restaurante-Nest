@@ -4,7 +4,7 @@ export class CreateProduto implements MigrationInterface{
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'produto',
+                name: 'vendaDetalhe',
                 columns: [
                     {
                         name: 'id',
@@ -12,18 +12,19 @@ export class CreateProduto implements MigrationInterface{
                         isPrimary: true
                     },
                     {
-                        name: 'nome',
-                        type: 'varchar'
-                    },
-                    {
-                        name: 'cod_categoria',
+                        name: 'cod_produto',
                         type: 'int',
-                        foreignKeyConstraintName: 'categoriaProduto'
+                        foreignKeyConstraintName: 'produto'
                     },
                     {
-                        name: 'valor',
-                        type: 'float'
-                    }
+                        name: 'quantidade',
+                        type: 'int'
+                    },
+                    {
+                        name: 'cod_venda',
+                        type: 'int',
+                        foreignKeyConstraintName: 'venda'
+                    },
                 ]
             })
 
@@ -32,6 +33,6 @@ export class CreateProduto implements MigrationInterface{
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('produto')
+        await queryRunner.dropTable('vendaDetalhe')
     }
 }
