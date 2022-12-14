@@ -1,7 +1,7 @@
 import { Injectable, HttpException} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm';
-import { FormaPagamento } from './formaPagamento.entity';
+import { FormaPagamento } from './formasPagamento.entity';
 
 interface CreateFormaPagamentoDTO{
   descricao: string;

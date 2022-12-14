@@ -19,12 +19,7 @@ export class CreateProduto implements MigrationInterface{
                     {
                         name: 'quantidade',
                         type: 'int'
-                    },
-                    {
-                        name: 'cod_venda',
-                        type: 'int',
-                        foreignKeyConstraintName: 'venda'
-                    },
+                    }
                 ]
             })
 

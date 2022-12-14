@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Patch, Delete, Req, Res, HttpException } from '@nestjs/common';
 import { Request, response, Response } from 'express';
-import { FormaPagamentoService } from './formaPagamento.service';
+import { FormaPagamentoService } from './formasPagamento.service';
 
 
 @Controller('formaPagamento')

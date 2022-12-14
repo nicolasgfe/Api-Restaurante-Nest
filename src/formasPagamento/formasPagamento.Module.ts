@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
 import {TypeOrmModule} from '@nestjs/typeorm'
-import { FormaPagamentoController } from "./formaPagamento.controller";
-import { FormaPagamento } from "./formaPagamento.entity";
-import { FormaPagamentoService } from "./formaPagamento.service";
+import { FormaPagamentoController } from "./formasPagamento.controller";
+import { FormaPagamento } from "./formasPagamento.entity";
+import { FormaPagamentoService } from "./formasPagamento.service";
 
 @Module({
   imports: [TypeOrmModule.forFeature([FormaPagamento])],

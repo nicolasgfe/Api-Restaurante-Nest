@@ -13,7 +13,6 @@ export class Produto{
   @JoinColumn()
   codCategoria: CategoriaProduto;
 
-
   @Column()
   valor: number;
 }
