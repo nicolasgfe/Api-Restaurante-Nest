@@ -7,7 +7,7 @@ export class VendaDetalhe {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(() => Produto, Produto => Produto.id)
+  @OneToMany(() => Produto, produto => produto.venda)
   @JoinColumn()
   cod_produto: Produto;
 
