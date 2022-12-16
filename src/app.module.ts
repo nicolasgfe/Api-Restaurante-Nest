@@ -4,6 +4,8 @@ import { CategoriaProduto } from './categoriaProdutos/categoriasProdutos.entity'
 import { CategoriaProdutoModule } from './categoriaProdutos/categoriasProdutos.Module';
 import { FormaPagamento } from './formasPagamento/formasPagamento.entity';
 import { FormaPagamentoModule } from './formasPagamento/formasPagamento.module';
+import { Pessoa } from './pessoas/pessoas.entity';
+import { PessoaModule } from './pessoas/pessoas.module';
 import { Produto } from './produtos/Produtos.entity';
 import { ProdutoModule } from './produtos/produtos.module';
 import { Venda } from './vendas/vendas.entity';
@@ -19,23 +21,26 @@ import { vendaDetalheModule } from './vendasDetalhe/vendasDetalhe.module';
       port: 3306,
       username: 'root',
       password: 'mysql',
-      database: 'apis-restaurante',
+      database: 'teste2',
       entities: [
         Produto, 
         CategoriaProduto, 
         FormaPagamento, 
         VendaDetalhe, 
-        Venda
+        Venda,
+        Pessoa
       ],
-      // migrations: ['./migrations'],
-      synchronize: true,
+      migrations: ["dist/migrations/*{.ts,.js}"],
+      migrationsTableName: "migrations_typeorm",
+      // synchronize: true,
       logging: true,
     }),
     ProdutoModule, 
     CategoriaProdutoModule, 
     FormaPagamentoModule, 
     vendaDetalheModule, 
-    vendaModule
+    vendaModule,
+    PessoaModule
 
   ],
 })

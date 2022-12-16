@@ -1,5 +1,5 @@
 import { FormaPagamento } from 'src/formasPagamento/formasPagamento.entity';
-import { VendaDetalhe } from 'src/vendasDetalhe/vendasDetalhe.entity';
+import { Pessoa } from 'src/pessoas/pessoas.entity';
 import { Entity, OneToMany, JoinColumn, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
@@ -8,9 +8,9 @@ export class Venda {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(() => VendaDetalhe, VendaDetalhe => VendaDetalhe.id)
+  @OneToMany(() => Pessoa, Pessoa => Pessoa.id)
   @JoinColumn()
-  cod_vendaDetalhe: VendaDetalhe;
+  cod_pessoa: Pessoa;
 
   @OneToMany(() => FormaPagamento, FormaPagamento => FormaPagamento.id)
   @JoinColumn()

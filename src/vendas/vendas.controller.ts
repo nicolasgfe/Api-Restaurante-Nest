@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Patch, Delete, Req, Res, HttpException } from '@nestjs/common';
-import { Request, response, Response } from 'express';
+import { Request, Response } from 'express';
 import { VendaService } from './vendas.service';
 
 
@@ -9,8 +9,8 @@ class VendaController {
 
   @Post()
   async create(@Req() request: Request, @Res() response: Response) {
-    const { cod_vendaDetalhe, cod_formaPagamento } = request.body;
-    const venda = await this.vendaService.create({ cod_vendaDetalhe, cod_formaPagamento });
+    const { cod_pessoa, cod_formaPagamento } = request.body;
+    const venda = await this.vendaService.create({ cod_pessoa, cod_formaPagamento });
 
     return response.status(201).json(venda).send();
   }
@@ -38,8 +38,8 @@ class VendaController {
   @Patch('/: id')
   async update(@Req() request: Request, @Res() response: Response) {
     const id = request.params
-    const { cod_vendaDetalhe, cod_formaPagamento } = request.body
-    const updatevenda = await this.vendaService.update(Number(id), { cod_vendaDetalhe, cod_formaPagamento })
+    const { cod_pessoa, cod_formaPagamento } = request.body
+    const updatevenda = await this.vendaService.update(Number(id), { cod_pessoa, cod_formaPagamento })
 
     return response.json(updatevenda).send()
   }

@@ -1,12 +1,12 @@
 import { Injectable, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm'
 import { FormaPagamento } from 'src/formasPagamento/formasPagamento.entity';
-import { VendaDetalhe } from 'src/vendasDetalhe/vendasDetalhe.entity';
+import { Pessoa } from 'src/pessoas/pessoas.entity';
 import { Repository } from 'typeorm';
 import { Venda } from './vendas.entity';
 
 interface CreateVendaDTO {
-  cod_vendaDetalhe: VendaDetalhe;
+  cod_pessoa: Pessoa;
   cod_formaPagamento: FormaPagamento;
 }
 
@@ -17,10 +17,10 @@ export class VendaService {
     private vendaRepository: Repository<Venda>,
   ) { }
 
-  async create({ cod_vendaDetalhe, cod_formaPagamento }: CreateVendaDTO): Promise<Venda> {
+  async create({ cod_pessoa, cod_formaPagamento }: CreateVendaDTO): Promise<Venda> {
     try {
       const venda = await this.vendaRepository.create({
-        cod_vendaDetalhe, cod_formaPagamento
+        cod_pessoa, cod_formaPagamento
       })
       await this.vendaRepository.save(venda)
       return venda;
@@ -51,8 +51,8 @@ export class VendaService {
     }
   }
 
-  async update(id: number, { cod_vendaDetalhe, cod_formaPagamento }: CreateVendaDTO): Promise<void> {
-    await this.vendaRepository.update({ id }, { cod_vendaDetalhe, cod_formaPagamento })
+  async update(id: number, { cod_pessoa, cod_formaPagamento }: CreateVendaDTO): Promise<void> {
+    await this.vendaRepository.update({ id }, { cod_pessoa, cod_formaPagamento })
   }
 
 
